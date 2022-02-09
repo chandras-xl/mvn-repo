@@ -9,13 +9,13 @@ pipeline{
         }
         stage('Test'){
             steps{
-                bat mvn test
+                bat 'mvn test'
             }
-            // post{
-            //     always{
-            //         junut 'target/surefire-reports/*.xml'
-            //     }
-            // }
+            post{
+                always{
+                    junut 'target/surefire-reports/*.xml'
+                }
+            }
         }
         stage('Delivery'){
             steps{
