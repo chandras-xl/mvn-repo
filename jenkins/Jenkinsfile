@@ -13,7 +13,7 @@ pipeline{
             }
             post{
                 always{
-                    junut 'target/surefire-reports/*.xml'
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
@@ -21,6 +21,18 @@ pipeline{
             steps{
                 echo "Delivery completed"
             }
+        }
+    }
+    post{
+        success{
+            slackSend channel: '#jenkinsci',
+                      color: 'good',
+                      message: "Executed the job ${currentBuild.fullDisplayName}"
+        }
+        failure{
+            slackSend channel: '#jenkinsci',
+                      color: 'danger',
+                      message: "Failed to execute the job ${currentBuild.fullDisplayName}"
         }
     }
 }
