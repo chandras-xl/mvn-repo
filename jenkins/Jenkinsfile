@@ -1,4 +1,6 @@
 @Library('shared-library')_
+import com.groovybuilder.globalvarClass
+import com.groovybuilder.sampleClass
 pipeline{
     agent any
 
