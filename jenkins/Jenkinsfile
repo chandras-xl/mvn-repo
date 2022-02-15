@@ -26,6 +26,13 @@ pipeline{
         stage('Shared library'){
             steps{
                 hello 'Welcome to groovy'
+                echo "The value of global variable foo is: " + globalvarClass.foo
+                script{
+                    def person = new sampleClass()
+                    person.age = 29
+                    person.incrementAge(10)
+                    println "Incremented age is: "+person.age
+                }
             }
         }
     }
