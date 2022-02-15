@@ -1,3 +1,4 @@
+@Library('shared-library')_
 pipeline{
     agent any
 
@@ -20,6 +21,11 @@ pipeline{
         stage('Delivery'){
             steps{
                 echo "Delivery completed"
+            }
+        }
+        stage('Shared library'){
+            steps{
+                hello 'Welcome to groovy'
             }
         }
     }
